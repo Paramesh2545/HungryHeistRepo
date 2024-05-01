@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 const Loader = () => {
-  const [show, setShow] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShow(false);
-    }, 3000);
-  }, []);
+  const width = window.innerWidth;
+  const height = window.innerHeight;
   return (
-    <div>
-      {show && (
-        // <video autoPlay muted loop>
-        //   <source src="../assets/loadingVid.mp4" type="video/mp4" />
-        //   this is vid
-        // </video>
-        <img src="../assets/Logo.jpeg"></img>
-      )}
+    <div className="loader">
+      <video autoPlay muted loop id="vid">
+        <source src="src/assets/loadingVid.mp4" type="video/mp4" />
+        this is vid
+      </video>
+      {/* <img src="logo.png" alt="loading" /> */}
     </div>
   );
 };
