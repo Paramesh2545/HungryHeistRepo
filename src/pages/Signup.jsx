@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { auth,googleProvider } from "../firebase-config";
+import { auth } from "../firebase-config";
 import { Link } from "react-router-dom";
 import { MdAlternateEmail } from "react-icons/md";
 import { MdOutlinePassword } from "react-icons/md";
 import { FaGoogle } from "react-icons/fa";
 import "../styles.css";
-import { Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signUpWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +18,8 @@ const Signup = () => {
   const [emptyPass1, setEmptyPass1] = useState(false);
   const [emptyPass2, setEmptyPass2] = useState(false);
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const location = useLocation();
+  // const history = useHistory();
 
   const register = async (e) => {
     e.preventDefault();
@@ -40,16 +42,25 @@ const Signup = () => {
         await createUserWithEmailAndPassword(auth, email, pass);
         const user = auth.currentUser;
         console.log(user + "user registered successfully");
-        Navigate("/");
+        if (location.pathname !== "/") {
+          window.location.href = "/";
+        }
       } catch (err) {
         console.log(err);
       }
     }
   };
 
-const googleSignup=(e)=>{
+  const googleSignup = async (e) => {
+    e.preventDefault();
+    const googleProvider = new GoogleAuthProvider();
+    await signInWithPopup(auth, googleProvider);
+    console.log(auth.currentUser);
+    if (location.pathname !== "/") {
+      window.location.href = "/";
+    }
+  };
 
-}
   return (
     <div className="upperbox">
       <div className="mainSign">

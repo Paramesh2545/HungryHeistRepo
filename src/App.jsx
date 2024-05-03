@@ -15,6 +15,7 @@ import Loader from "./components/Loader";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import "./styles.css";
+
 const App = () => {
   return (
     <Router>
