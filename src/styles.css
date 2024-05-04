@@ -50,37 +50,7 @@ body {
     opacity: 0;
   }
 }
-.navmain {
-  /* border: 1px solid black; */
-  height: 100vh;
-  width: fit-content;
-  padding: 10px;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.innernav {
-  display: flex;
-  flex-direction: column;
-  /* border: 1px solid #203a37; */
-  border-radius: 30px;
-  padding: 10px;
-  height: 40%;
-  justify-content: space-evenly;
-  background-color: #82b6d1;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.navelements {
-  min-height: 2rem;
-  min-width: 2rem;
-  padding: 5px;
-  color: black;
-}
-.navelements:hover {
-  cursor: pointer;
-  scale: 1.5;
-}
+
 
 .mainSign {
   /* border: 1px solid black; */

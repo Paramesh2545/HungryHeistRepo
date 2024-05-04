@@ -20,24 +20,34 @@ const Signup = () => {
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const location = useLocation();
   // const history = useHistory();
-
+  var temp = true;
   const register = async (e) => {
     e.preventDefault();
     if (!emailRegex.test(email)) {
       setEmailErr(true);
-      toast.success("User Registered Successfully!!", {
-        position: "center",
-      });
+      temp = false;
+    } else {
+      temp = true;
     }
     if (pass.length === 0) {
       setEmptyPass1(true);
+      temp = false;
+    } else {
+      temp = true;
     }
     if (cpass.length === 0) {
       setEmptyPass2(true);
+      temp = false;
+    } else {
+      temp = true;
     }
     if (pass !== cpass) {
       setErr(true);
+      temp = false;
     } else {
+      temp = true;
+    }
+    if (temp) {
       try {
         await createUserWithEmailAndPassword(auth, email, pass);
         const user = auth.currentUser;
@@ -51,15 +61,9 @@ const Signup = () => {
     }
   };
 
-  const googleSignup = async (e) => {
-    e.preventDefault();
-    const googleProvider = new GoogleAuthProvider();
-    await signInWithPopup(auth, googleProvider);
-    console.log(auth.currentUser);
-    if (location.pathname !== "/") {
-      window.location.href = "/";
-    }
-  };
+  if (location.pathname !== "/") {
+    window.location.href = "/";
+  }
 
   return (
     <div className="upperbox">

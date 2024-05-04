@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { auth } from "../firebase-config";
 import Loader from "../components/Loader";
 import "../styles.css";
 
@@ -9,6 +10,7 @@ const Home = () => {
     const timer = setTimeout(() => {
       setShow(false);
       console.log("timer stopped");
+      console.log(auth.currentUser.uid);
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
