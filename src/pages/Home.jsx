@@ -74,8 +74,8 @@ const Home = () => {
     getLocation()
       .then((location) => {
         const { latitude, longitude } = location;
-        // console.log("Latitude:", latitude);
-        // console.log("Longitude:", longitude);
+        console.log("Latitude:", latitude);
+        console.log("Longitude:", longitude);
         setlatitude = latitude;
         setlongitude = longitude;
       })
