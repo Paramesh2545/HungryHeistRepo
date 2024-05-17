@@ -3,7 +3,7 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCdAO7J32HZGTUH2u2MJ54gDGn820RMY54",
+ // apiKey: "AIzaSyCdAO7J32HZGTUH2u2MJ54gDGn820RMY54",
   authDomain: "hungruheist.firebaseapp.com",
   projectId: "hungruheist",
   storageBucket: "hungruheist.appspot.com",
